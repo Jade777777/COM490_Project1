@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
 
     float yVelocity = 0;
 
-    private void Start()
+    void Start()
     {
         cc = GetComponent<CharacterController>();
     }
@@ -27,10 +27,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 dir = new Vector3( h, 0, v);
 
-        
-        dir = Camera.main.transform.TransformDirection(dir);
-        
-        //dir = Camera.main.transform. dir;
+        dir = Quaternion.Euler(0,Camera.main.transform.rotation.eulerAngles.y,0)*dir;
 
         if (cc.isGrounded)
         {
